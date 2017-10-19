@@ -1,6 +1,9 @@
+const readlineSync = require('readline-sync');
+
 module.exports = class Blackjack {
   constructor() {
     this.playerBankroll = 1000;
+    this.betAmount = 0;
   }
 
   startGame() {
@@ -21,7 +24,10 @@ module.exports = class Blackjack {
   }
 
   takeBets() {
-
+    console.log(`Available bankroll: ${this.playerBankroll}`);
+    const betAmount = readlineSync.question('How much would you like to bet?\n');
+    this.playerBankroll -= parseInt(betAmount);
+    this.betAmount = parseInt(betAmount);
   }
 
   dealHands() {
