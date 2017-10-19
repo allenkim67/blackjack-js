@@ -21,6 +21,7 @@ module.exports = class Blackjack {
       this.dealHands();
       this.playOutHands();
       this.makePayouts();
+      this.cleanup();
     }
 
     console.log('Thanks for playing!');
@@ -87,5 +88,15 @@ module.exports = class Blackjack {
     } else {
       console.log('You lose.');
     }
+  }
+
+  cleanup() {
+    this.betAmount = 0;
+
+    this.player.hand = [];
+    this.dealer.hand = [];
+
+    this.deck = new Deck();
+    this.deck.shuffle();
   }
 };
