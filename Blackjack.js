@@ -1,9 +1,16 @@
 const readlineSync = require('readline-sync');
+const Deck = require('./Deck');
 
 module.exports = class Blackjack {
   constructor() {
     this.playerBankroll = 1000;
     this.betAmount = 0;
+
+    this.deck = new Deck();
+    this.deck.shuffle();
+
+    this.playerHand = [];
+    this.dealerHand = [];
   }
 
   startGame() {
@@ -31,7 +38,8 @@ module.exports = class Blackjack {
   }
 
   dealHands() {
-
+    this.playerHand = this.deck.draw(2);
+    this.dealerHand = this.deck.draw(2);
   }
 
   playOutHands() {

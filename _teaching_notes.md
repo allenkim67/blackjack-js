@@ -1,33 +1,23 @@
 **Blackjack.js**
 
-First let's describe what we want to happen in the `takeBets` method:
+Let's think about what needs to happen in `dealHands`:
 
-1. Show the player how much they have in their bankroll.
-2. Ask the player how much they want to bet.
-3. Reduce the player's bankroll by the bet amount.
-4. Save the bet amount so you can pay out later.
+1. We need to create cards
+2. We need to draw cards and deal cards randomly
+3. We need to store the cards as player and dealer hands
 
-None of these things look like they should be handled by another object. They're
-also simple enough to code directly without creating any new methods.
+One way we could do this is to add methods to the `Blackjack` class like `createCards`,
+`shuffleCards`, `dealCards`. But our `Blackjack` class is getting long and all
+these methods are related to cards so it seems like a good place to create a new
+`Deck` class.
 
-For getting the user's input we use the `readline-sync` library. It's good to
-have a record of any dependencies we install so I start by generating the
-`package.json` with the commmand `npm init`. Then `npm install readline-sync`.
-We also used backticks for string interpolation. See references for usage.
+Assuming we have a `Deck` class, now what needs to happen is:
+
+1. Create a `Deck` object and  shuffle it
+2. In `dealHands` draw cards from the deck and...
+3. Assign the cards to `this.playerHand` and `this.dealerHand`
 
 #### Follow Along
-Next let's work on the `takeBets` method. I'll now describe a general three
-step approach:
-
-1. Think about what needs to happen in the method
-2. Consider if you want some other object to be responsible for the work in this
-method.
-3. Translate to code, creating new methods if needed
-
-Next let's try to implement `dealHands`.
-
-#### References
-
-[Template literals (backtick strings)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
-
-[anseki/readline-sync](https://github.com/anseki/readline-sync)
+We need to complete the methods that have been setup in the `Deck` class. Let's
+start with `createCards`. Think about how you want cards to be represented. A
+string? An object? A class?
