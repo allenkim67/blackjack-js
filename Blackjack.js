@@ -1,6 +1,6 @@
 module.exports = class Blackjack {
   constructor() {
-
+    this.playerBankroll = 1000;
   }
 
   startGame() {
@@ -17,7 +17,7 @@ module.exports = class Blackjack {
   }
 
   keepPlaying() {
-
+    return this.playerBankroll > 0;
   }
 
   takeBets() {
